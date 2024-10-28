@@ -72,11 +72,31 @@ function getMyDailyTask() {
     })
 }
 
+const startGameLoading = ref(false)
 function onPlayNow() {
     // onSelectCurrencyPopupShow()
     // joinOfficialChannel()
-
-    onSelectCurrencySubmit('miuuu_1')
+    if (startGameLoading.value) {
+        return
+    }
+    startGameLoading.value = true
+    getDailyTask().then((rsp: any) => {
+        startGameLoading.value = false
+        if (rsp.data) {
+            dailyTaskStatus.value = rsp.data.status ? rsp.data.status : 0
+            dailyTaskTodayReward.value = rsp.data.today_reward ? rsp.data.today_reward : 0
+            dailyTaskTomorrowReward.value = rsp.data.tomorrow_reward ? rsp.data.tomorrow_reward : 0
+            dailyTaskCheckedDays.value = rsp.data.current_streak ? rsp.data.current_streak : 0
+            if (dailyTaskStatus.value == 0) {
+                onSelectCurrencySubmit('miuuu_1')
+            }
+        } else {
+            showFailToast('Start game failed');
+        }
+    }).catch((error) => {
+        startGameLoading.value = false
+        showFailToast('Start game failed');
+    })
 }
 
 const dailyTaskIsChecking = ref(false)
@@ -279,7 +299,7 @@ function onAddressSubmit(address: string) {
                         Come back tomorrow for <span>{{ dailyTaskTomorrowReward }} MIUUU</span>.
                     </div>
                     <div v-if="dailyTaskStatus == 1" class="task-btn" @click="onClaimReward">Claim Today’s Reward</div>
-                    <div v-else-if="dailyTaskStatus == 2" class="task-btn finished" @click="onPlayNow">Reward Claimed Today</div>
+                    <div v-else-if="dailyTaskStatus == 2" class="task-btn finished">Reward Claimed Today</div>
                     <div v-else class="task-btn" @click="onPlayNow">Play now!</div>
                 </div>
                 <div 
