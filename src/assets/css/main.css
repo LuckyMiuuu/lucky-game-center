@@ -1,0 +1,223 @@
+@import './base.css';
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('./font/Inter/static/Inter-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('./font/Inter/static/Inter-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html{
+  font-size: 10px;
+}
+
+html,
+body,
+#app,
+.wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: "Inter", "SimHei", "黑体", sans-serif, "Helvetica Neue", Helvetica, "microsoft yahei", arial, STHeiTi, sans-serif;
+}
+
+.orbitron-font {
+  font-family: 'Orbitron', sans-serif;
+}
+
+#app{
+  /* max-width: 750px; */
+  background: #ffffff;
+  margin: 0 auto;
+  padding-top: 0px;
+  overflow-y: auto;
+}
+
+a {
+    text-decoration: none
+}
+
+.move-enter-active,
+.move-leave-active {
+    transition: opacity .1s ease;
+}
+
+.move-enter-from,
+.move-leave-to {
+    opacity: 0;
+}
+
+
+/*markdown*/
+/* 修改浏览器滚动条 */
+::-webkit-scrollbar{width:10px;height:6px;
+
+    background-color: #dbd5d5;
+    border-radius:10px
+
+}
+
+::-webkit-scrollbar-thumb{background-color:rgb(165, 163, 163);border-radius:10px;}
+
+::-webkit-scrollbar-track{background-color:transparent; }
+
+.ellipsis1 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ellipsis2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.ellipsis3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+.ellipsis4 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+.hidden-scroll-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.main-btn-bg-color{
+    background: #000;
+}
+
+.main-bg-color1{
+    background: #FFDEEC;
+}
+.main-bg-color2{
+    background: #FD016A;
+}
+.main-bg-color3{
+    background: rgba(255, 57, 139, 0.50);
+}
+.van-swipe__indicator {
+    background: #FFDEEC;
+    opacity: 1;
+}
+.van-swipe__indicator.van-swipe__indicator--active {
+    background: #FD016A;
+}
+
+
+
+.list-item{
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0px;
+    
+}
+
+.list-item .item-detail{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+.item-detail img{
+    width: 30px;
+    margin-right: 8px;
+}
+.item-detail .item-info{
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+}
+.item-info .item-title{
+    color: #000;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 19px;
+}
+.item-title-w-limit1{
+    width: 250px;
+}
+.item-title-w-limit2{
+    width: 200px;
+}
+.item-title-w-limit3{
+    width: 140px;
+}
+.item-info .item-desc{
+    color: rgba(0, 0, 0, .5);
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 15px;
+}
+.list-item .item-btn{
+    width: 72px;
+    height: 34px;
+    border-radius: 8px;
+    border: 1px solid #000;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.list-item .item-btn.disable{
+    background: #FFDEEC;
+    color: #ffffff;
+    border: none;
+}
+.list-item .item-cost{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.item-cost .item-cost-type{
+    color: #000;
+    font-size: 16px;
+    font-weight: 590;
+    line-height: 19px;
+}
+.item-cost .item-cost-amount{
+    color: #000;
+    font-size: 16px;
+    font-weight: 590;
+    line-height: 19px;
+}
+.item-cost .item-cost-coin{
+    color: rgba(0, 0, 0, .5);
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 15px;
+}
