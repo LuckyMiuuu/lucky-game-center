@@ -89,6 +89,15 @@ onMounted(() => {
             groups: 0,
             rounds: 0,
         },
+        {
+            game_id: 8,
+            game_short_name: 'LuckyTap',
+            game_show_name: 'Lucky Tap',
+            game_url: 'https://t.me/myweb3gamebot/LuckyTap',
+            game_img: new URL('@/assets/images/game_tap.png', import.meta.url).href,
+            groups: 0,
+            rounds: 0,
+        },
     ]
     const gamesProd = [
         {
@@ -151,6 +160,15 @@ onMounted(() => {
             game_show_name: 'Lucky Stacker',
             game_url: 'https://t.me/LuckyMiuuu_bot/LuckyStacker',
             game_img: new URL('@/assets/images/game_stacker.png', import.meta.url).href,
+            groups: 0,
+            rounds: 0,
+        },
+        {
+            game_id: 8,
+            game_short_name: 'LuckyTap',
+            game_show_name: 'Lucky Tap',
+            game_url: 'https://t.me/LuckyMiuuu_bot/LuckyTap',
+            game_img: new URL('@/assets/images/game_tap.png', import.meta.url).href,
             groups: 0,
             rounds: 0,
         },
