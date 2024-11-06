@@ -147,3 +147,24 @@ export function dailyTaskCheckin() {
         url: 'api/v1/telegram/usertask/checkin',
     })
 }
+
+export function getRewardBoostHistory() {
+    return axiosRequest({
+        method: 'get',
+        url: 'api/v1/usertask/reward/list', 
+    })
+}
+
+export function getRewardAchivedHistory() {
+    return axiosRequest({
+        method: 'get',
+        url: 'api/v1/usertask/reward/completes',
+    })
+}
+
+export function getRewardUserTaskInfo() {
+    return axiosRequest({
+        method: 'get',
+        url: 'api/v1/usertask/reward/open',
+    })
+}

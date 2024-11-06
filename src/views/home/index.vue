@@ -8,6 +8,7 @@ import { base64Decode } from '@/utils/js-helpers'
 import Games from './Games.vue';
 import MyMiuuu from './MyMiuuu.vue';
 import Balance from './Balance.vue'
+import Rewards from './Rewards.vue'
 
 defineOptions({
   name: 'HomeView'
@@ -51,7 +52,14 @@ setSelfTelegramFirstName(telegramWebApp?.initDataUnsafe?.user?.first_name)
 setSelfTelegramLastName(telegramWebApp?.initDataUnsafe?.user?.last_name)
 setSelfTelegramInitData(telegramInitData)
 
-
+if (!import.meta.env.PROD) {
+    telegramInitData = 'user=%7B%22id%22%3A6580267658%2C%22first_name%22%3A%22chen%22%2C%22last_name%22%3A%22kang%22%2C%22username%22%3A%22coding946%22%2C%22language_code%22%3A%22en%22%2C%22allows_write_to_pm%22%3Atrue%7D&chat_instance=-4181195251876422561&chat_type=supergroup&start_param=eyJjaGF0X2lkIjogIi0xMDAyMjEzNjk2MTY0IiwgImdyb3VwX21vZGUiOiB0cnVlfQ%3D%3D&auth_date=1722234656&hash=c36ae2432ceda069d70c49d42b1d83fcb76d14f1f99a2b539fedce979e446a6b'
+    setSelfTelegramUserId(6580267658)
+    setSelfTelegramUserName('coding946')
+    setSelfTelegramFirstName('chen')
+    setSelfTelegramLastName('kang')
+    setSelfTelegramInitData(telegramInitData)
+}
 
 const tabParam = ref(0)
 const urlParams = ref<UrlParams>({
@@ -70,12 +78,30 @@ if (tgWebAppStartParamBase64) {
     urlParams.value.from_room_id = tgWebAppStartParam.room_id ? tgWebAppStartParam.room_id : ''
     urlParams.value.from_group_mode = tgWebAppStartParam.group_mode ? tgWebAppStartParam.group_mode : true
     urlParams.value.from_tg_user_id = tgWebAppStartParam.tg_user_id ? tgWebAppStartParam.tg_user_id : 0
+
+    const tabMap = [
+        { paramTab: 3, tabIndex: 0 }, // 3 rewards => tab index 0
+        { paramTab: 0, tabIndex: 1 }, // 0 rewards => tab index 1
+        { paramTab: 1, tabIndex: 2 }, // 1 rewards => tab index 2
+        { paramTab: 2, tabIndex: 3 }, // 2 rewards => tab index 3
+    ]
     tabParam.value = tgWebAppStartParam.tab ? tgWebAppStartParam.tab : 0
-    tabParam.value = tabParam.value > 2 ? 0 : tabParam.value
+    tabParam.value = tabParam.value > 3 ? 0 : tabParam.value
+    if (tabParam.value >= 0 && tabParam.value <= 3) {
+        const tab = tabMap.filter((item) => {
+            return item.paramTab == tabParam.value
+        })
+        tabParam.value = tab && tab.length > 0 ? tab[0].tabIndex : 0;
+    }
 }
 
 const activeTab = ref(tabParam.value ? tabParam.value : 0);
 const tabs = [
+    {
+        text: 'Rewards',
+        activeIcon: new URL('@/assets/images/tab_rewards_active.png', import.meta.url).href,
+        inactiveIcon: new URL('@/assets/images/tab_rewards_inactive.png', import.meta.url).href
+    },
     {
         text: 'Games',
         activeIcon: new URL('@/assets/images/tab_games_active.png', import.meta.url).href,
@@ -124,11 +150,12 @@ function userLogin() {
 
 <template>
     <div class="page">
-        <Games v-show="activeTab == 0" :params="urlParams" :canGetData="canGetData" />
+        <Rewards v-show="activeTab == 0" :params="urlParams" :canGetData="canGetData" :show="activeTab == 0" />
+        <Games v-show="activeTab == 1" :params="urlParams" :canGetData="canGetData" />
         <Balance v-show="activeTab == 2" :params="urlParams" :canGetData="canGetData" />
-        <MyMiuuu v-show="activeTab != 0 && activeTab != 2" :params="urlParams" :canGetData="canGetData" />
+        <MyMiuuu v-show="activeTab != 0 && activeTab != 1 && activeTab != 2" :params="urlParams" :canGetData="canGetData" />
 
-        <van-tabbar v-model="activeTab" active-color="#000000" inactive-color="#AEAEAE" @change="onTabChange">
+        <van-tabbar v-model="activeTab" active-color="#000000" inactive-color="#AEAEAE" @click="onTabChange">
             <van-tabbar-item v-for="(tab, index) in tabs" :key="index">
                 <span>{{ tab.text }}</span>
                 <template #icon="props">

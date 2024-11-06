@@ -8,6 +8,7 @@ import { joinOfficialChannel } from '@/utils/general'
 import OperationBox from '@/components/common/OperationBox.vue';
 import SelectGroupPopup from '@/components/games/SelectGroupPopup.vue';
 import SelectCurrencyPopup from '@/components/games/SelectCurrencyPopup.vue';
+import {GAME_TEST_LIST,GAME_PROD_LIST} from '@/constants/index'
 
 defineOptions({
   name: 'GamesView'
@@ -25,160 +26,13 @@ const props = defineProps({
 })
 
 onMounted(() => {
-    const gamesTest = [
-        {
-            game_id: 1,
-            game_short_name: 'LuckyTrump',
-            game_show_name: 'Luck Trump',
-            game_url: 'https://t.me/myweb3gamebot/LuckyTrump',
-            game_img: new URL('@/assets/images/game_trump.png', import.meta.url).href,
-            groups: 0,
-            rounds: 0,
-        },
-        {
-            game_id: 2,
-            game_short_name: 'LuckyJump',
-            game_show_name: 'Lucky Jump',
-            game_url: 'https://t.me/myweb3gamebot/LuckyJump',
-            game_img: new URL('@/assets/images/game_jump.png', import.meta.url).href,
-            groups: 0,
-            rounds: 0,
-        },
-        {
-            game_id: 3,
-            game_short_name: 'LuckyPile',
-            game_show_name: 'Lucky Pile',
-            game_url: 'https://t.me/myweb3gamebot/LuckyPile',
-            game_img: new URL('@/assets/images/game_pile.png', import.meta.url).href,
-            groups: 0,
-            rounds: 0,
-        },
-        {
-            game_id: 4,
-            game_short_name: 'LuckyEater',
-            game_show_name: 'Lucky Eater',
-            game_url: 'https://t.me/myweb3gamebot/LuckyEater',
-            game_img: new URL('@/assets/images/game_eater.png', import.meta.url).href,
-            groups: 0,
-            rounds: 0,
-        },
-        {
-            game_id: 5,
-            game_short_name: 'LuckyCombine',
-            game_show_name: 'Lucky Combine',
-            game_url: 'https://t.me/myweb3gamebot/LuckyCombine',
-            game_img: new URL('@/assets/images/game_combine.png', import.meta.url).href,
-            groups: 0,
-            rounds: 0,
-        },
-        {
-            game_id: 6,
-            game_short_name: 'LuckyShooter',
-            game_show_name: 'Lucky Shooter',
-            game_url: 'https://t.me/myweb3gamebot/LuckyShooter',
-            game_img: new URL('@/assets/images/game_shooter.png', import.meta.url).href,
-            groups: 0,
-            rounds: 0,
-        },
-        {
-            game_id: 7,
-            game_short_name: 'LuckyStacker',
-            game_show_name: 'Lucky Stacker',
-            game_url: 'https://t.me/myweb3gamebot/LuckyStacker',
-            game_img: new URL('@/assets/images/game_stacker.png', import.meta.url).href,
-            groups: 0,
-            rounds: 0,
-        },
-        {
-            game_id: 8,
-            game_short_name: 'LuckyTap',
-            game_show_name: 'Lucky Tap',
-            game_url: 'https://t.me/myweb3gamebot/LuckyTap',
-            game_img: new URL('@/assets/images/game_tap.png', import.meta.url).href,
-            groups: 0,
-            rounds: 0,
-        },
-    ]
-    const gamesProd = [
-        {
-            game_id: 1,
-            game_short_name: 'LuckyTrump',
-            game_show_name: 'Luck Trump',
-            game_url: 'https://t.me/LuckyMiuuu_bot/LuckyTrump',
-            game_img: new URL('@/assets/images/game_trump.png', import.meta.url).href,
-            groups: 0,
-            rounds: 0,
-        },
-        {
-            game_id: 2,
-            game_short_name: 'LuckyJump',
-            game_show_name: 'Lucky Jump',
-            game_url: 'https://t.me/LuckyMiuuu_bot/LuckyJump',
-            game_img: new URL('@/assets/images/game_jump.png', import.meta.url).href,
-            groups: 0,
-            rounds: 0,
-        },
-        {
-            game_id: 3,
-            game_short_name: 'LuckyPile',
-            game_show_name: 'Lucky Pile',
-            game_url: 'https://t.me/LuckyMiuuu_bot/LuckyPile',
-            game_img: new URL('@/assets/images/game_pile.png', import.meta.url).href,
-            groups: 0,
-            rounds: 0,
-        },
-        {
-            game_id: 4,
-            game_short_name: 'LuckyEater',
-            game_show_name: 'Lucky Eater',
-            game_url: 'https://t.me/LuckyMiuuu_bot/LuckyEater',
-            game_img: new URL('@/assets/images/game_eater.png', import.meta.url).href,
-            groups: 0,
-            rounds: 0,
-        },
-        {
-            game_id: 5,
-            game_short_name: 'LuckyCombine',
-            game_show_name: 'Lucky Combine',
-            game_url: 'https://t.me/LuckyMiuuu_bot/LuckyCombine',
-            game_img: new URL('@/assets/images/game_combine.png', import.meta.url).href,
-            groups: 0,
-            rounds: 0,
-        },
-        {
-            game_id: 6,
-            game_short_name: 'LuckyShooter',
-            game_show_name: 'Lucky Shooter',
-            game_url: 'https://t.me/LuckyMiuuu_bot/LuckyShooter',
-            game_img: new URL('@/assets/images/game_shooter.png', import.meta.url).href,
-            groups: 0,
-            rounds: 0,
-        },
-        {
-            game_id: 7,
-            game_short_name: 'LuckyStacker',
-            game_show_name: 'Lucky Stacker',
-            game_url: 'https://t.me/LuckyMiuuu_bot/LuckyStacker',
-            game_img: new URL('@/assets/images/game_stacker.png', import.meta.url).href,
-            groups: 0,
-            rounds: 0,
-        },
-        {
-            game_id: 8,
-            game_short_name: 'LuckyTap',
-            game_show_name: 'Lucky Tap',
-            game_url: 'https://t.me/LuckyMiuuu_bot/LuckyTap',
-            game_img: new URL('@/assets/images/game_tap.png', import.meta.url).href,
-            groups: 0,
-            rounds: 0,
-        },
-    ]
+    
     if (import.meta.env.VITE_NODE_ENV == 'prod') {
-        mainGame.value = gamesProd[1]
-        gameList.value = gamesProd.filter((item,index) => item.game_id != mainGame.value?.game_id)
+        mainGame.value = GAME_PROD_LIST[1]
+        gameList.value = GAME_PROD_LIST.filter((item,index) => item.game_id != mainGame.value?.game_id)
     } else {
-        mainGame.value = gamesTest[1]
-        gameList.value = gamesTest.filter((item,index) => item.game_id != mainGame.value?.game_id)
+        mainGame.value = GAME_TEST_LIST[1]
+        gameList.value = GAME_TEST_LIST.filter((item,index) => item.game_id != mainGame.value?.game_id)
     }
 })
 
