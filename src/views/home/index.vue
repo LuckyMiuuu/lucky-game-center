@@ -150,10 +150,10 @@ function userLogin() {
 
 <template>
     <div class="page">
-        <Rewards v-show="activeTab == 0" :params="urlParams" :canGetData="canGetData" :show="activeTab == 0" />
+        <Rewards v-show="activeTab != 1 && activeTab != 2 && activeTab != 3" :params="urlParams" :canGetData="canGetData" :show="activeTab != 1 && activeTab != 2 && activeTab != 3" />
         <Games v-show="activeTab == 1" :params="urlParams" :canGetData="canGetData" />
-        <Balance v-show="activeTab == 2" :params="urlParams" :canGetData="canGetData" />
-        <MyMiuuu v-show="activeTab != 0 && activeTab != 1 && activeTab != 2" :params="urlParams" :canGetData="canGetData" />
+        <MyMiuuu v-show="activeTab == 2" :params="urlParams" :canGetData="canGetData" />
+        <Balance v-show="activeTab == 3" :params="urlParams" :canGetData="canGetData" />
 
         <van-tabbar v-model="activeTab" active-color="#000000" inactive-color="#AEAEAE" @click="onTabChange">
             <van-tabbar-item v-for="(tab, index) in tabs" :key="index">

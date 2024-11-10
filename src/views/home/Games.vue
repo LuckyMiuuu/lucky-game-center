@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { ref, onMounted, watch } from 'vue'
+import { storeToRefs } from 'pinia';
+import { useUserStore } from '@/stores/user';
+import { base64Encode } from '@/utils/js-helpers'
 import { showSuccessToast, showFailToast } from 'vant';
 import type { UrlParams, GroupInfo, GameInfo } from '@/models'
 import { getMyGroups, pushGame, getGameStatistical } from '@/api/index'
@@ -44,7 +47,12 @@ watch(() => [props.canGetData],
                 getGroups()
             }
     }
-});
+    });
+
+const userStore = useUserStore()
+const {
+    selfTelegramUserId,
+} = storeToRefs(userStore)
 
 const mainGame = ref<GameInfo>()
 const gameList = ref<Array<GameInfo>>([])
@@ -88,8 +96,23 @@ function onGame(game: GameInfo | undefined) {
     if (!game) {
         return
     }
-    pendingGame.value = game
-    onSendGamePopupShow()
+
+    if (myGroupList.value.length > 0) {
+        pendingGame.value = game
+        onSendGamePopupShow()
+    } else {
+        let gameShortUrl = game.game_url
+        var params = {
+            chat_id: props.params.from_chat_id,
+            room_id: props.params.from_room_id,
+            group_mode: props.params.from_group_mode,
+            tg_user_id: selfTelegramUserId.value,
+            cost_type: 'miuuu_1'
+        }
+        var gameUrl = gameShortUrl + '?startapp=' + base64Encode(JSON.stringify(params))
+        window.open(gameUrl, '_blank');
+    }
+    
 }
 
 
