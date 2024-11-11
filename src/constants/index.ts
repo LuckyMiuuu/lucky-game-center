@@ -177,10 +177,13 @@ export const GAME_PROD_LIST = [
     },
 ]
 
-export const INVITE_FRIEND_TO_BOOST_TEXT = `Play Lucky Miuuu game and earn up to 100 USDT!
-Invite more friends, earn more USDT!
-Plus, you can get $Miuuu token points while you play!
-Join Lucky Miuuu Community for exclusive airdrops!`
+export const INVITE_FRIEND_TO_BOOST_TEXT = `🐱Play Lucky Miuuu game and earn up to 💰100 USDT!
+
+🧑‍🤝‍🧑Invite more friends, earn more USDT!
+
+🎁Plus, you can get $Miuuu token points while you play!
+
+🎆Join Lucky Miuuu Community for exclusive airdrops!`
 
 export function getInviteFriendToBootGameLink() {
     let gameList = []
