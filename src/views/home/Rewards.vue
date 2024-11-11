@@ -71,7 +71,7 @@ const completeNess = ref(0)
 
 const percentValue = ref(0)
 
-const miuuuActiveTab = ref(1)
+const miuuuActiveTab = ref(2)
 function onMiuuuTab(index: number) {
     if (miuuuActiveTab.value != index) {
         miuuuActiveTab.value = index
