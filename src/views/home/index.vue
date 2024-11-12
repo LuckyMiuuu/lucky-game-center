@@ -52,15 +52,6 @@ setSelfTelegramFirstName(telegramWebApp?.initDataUnsafe?.user?.first_name)
 setSelfTelegramLastName(telegramWebApp?.initDataUnsafe?.user?.last_name)
 setSelfTelegramInitData(telegramInitData)
 
-if (!import.meta.env.PROD) {
-    telegramInitData = 'user=%7B%22id%22%3A6580267658%2C%22first_name%22%3A%22chen%22%2C%22last_name%22%3A%22kang%22%2C%22username%22%3A%22coding946%22%2C%22language_code%22%3A%22en%22%2C%22allows_write_to_pm%22%3Atrue%7D&chat_instance=-4181195251876422561&chat_type=supergroup&start_param=eyJjaGF0X2lkIjogIi0xMDAyMjEzNjk2MTY0IiwgImdyb3VwX21vZGUiOiB0cnVlfQ%3D%3D&auth_date=1722234656&hash=c36ae2432ceda069d70c49d42b1d83fcb76d14f1f99a2b539fedce979e446a6b'
-    setSelfTelegramUserId(6580267658)
-    setSelfTelegramUserName('coding946')
-    setSelfTelegramFirstName('chen')
-    setSelfTelegramLastName('kang')
-    setSelfTelegramInitData(telegramInitData)
-}
-
 const tabParam = ref(0)
 const urlParams = ref<UrlParams>({
     from_chat_id: '',
