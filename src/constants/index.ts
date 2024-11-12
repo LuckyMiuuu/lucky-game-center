@@ -14,7 +14,7 @@ export const GAME_TEST_LIST = [
     {
         game_id: 1,
         game_short_name: 'LuckyTrump',
-        game_show_name: 'Luck Trump',
+        game_show_name: 'Lucky Trump',
         game_url: 'https://t.me/myweb3gamebot/LuckyTrump',
         game_img: new URL('@/assets/images/game_trump.png', import.meta.url).href,
         groups: 0,
@@ -97,7 +97,7 @@ export const GAME_PROD_LIST = [
     {
         game_id: 1,
         game_short_name: 'LuckyTrump',
-        game_show_name: 'Luck Trump',
+        game_show_name: 'Lucky Trump',
         game_url: 'https://t.me/LuckyMiuuu_bot/LuckyTrump',
         game_img: new URL('@/assets/images/game_trump.png', import.meta.url).href,
         groups: 0,
