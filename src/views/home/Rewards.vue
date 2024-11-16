@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import { ref, onMounted, watch, computed } from 'vue'
 import { storeToRefs } from 'pinia';
-import { showToast } from 'vant';
+import { showSuccessToast, showFailToast, showToast } from 'vant';
 import type { UrlParams } from '@/models'
 import { getRewardBoostHistory, getRewardAchivedHistory, getRewardUserTaskInfo } from '@/api/index'
+import {
+    getUserWalletAddress,
+    setUserWalletAddress,
+} from '@/api/index'
 import { base64Encode } from '@/utils/js-helpers'
 import { useUserStore } from '@/stores/user';
 import { getInviteFriendToBootGameLink,onInviteFriendToBoost, INVITE_FRIEND_TO_BOOST_TEXT } from '@/constants/index'
@@ -49,6 +53,7 @@ watch(() => [props.canGetData, props.show],
                 getUserTaskInfo()
                 getBoostList()
                 getAchivedList()
+                getAddress()
             }
 
             if (newVal[1]) {
@@ -200,6 +205,33 @@ function onGuidePopupHide() {
     guidePopupShow.value = false;
 }
 
+const selfWalletAddress = ref('')
+function getAddress() {
+    getUserWalletAddress().then((userRsp: any) => {
+        if (userRsp.data && userRsp.data.address) {
+            selfWalletAddress.value = userRsp.data.address
+        }
+    }).catch((error) => {
+        
+    })
+}
+function onAddressSubmit(address: string) {
+    let data = JSON.stringify({
+        address: address
+    })
+    setUserWalletAddress(data).then((userRsp: any) => {
+        if (userRsp.code == 0) {
+            showSuccessToast('set address successfully')
+            onGuidePopupHide()
+            getAddress()
+        } else {
+            showFailToast('set address faild')
+        }
+    }).catch((error) => {
+        showFailToast('set address faild')
+    })
+}
+
 </script>
 
 <template>
@@ -326,7 +358,9 @@ function onGuidePopupHide() {
             :percent="percent"
             :inviteLink="inviteLink"
             :copyText="copyText"
+            :address="selfWalletAddress" 
             @onClose="onGuidePopupHide" 
+            @on-address-submit="onAddressSubmit"
         />
         
         

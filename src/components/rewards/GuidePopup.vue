@@ -4,6 +4,7 @@ import { showToast } from 'vant';
 import Clipboard from 'clipboard'
 import { onInviteFriendToBoost } from '@/constants/index'
 import Popup from '../common/Popup.vue';
+import Button from '../common/Button.vue';
 
 const props = defineProps({
     show: {
@@ -26,9 +27,13 @@ const props = defineProps({
         type: String,
         required: true,
     },
+    address: {
+        type: String,
+        default: '',
+    },
 })
 
-const emits = defineEmits(['onClose'])
+const emits = defineEmits(['onClose', 'onAddressSubmit'])
 
 const popupIsShow = ref(false)
 
@@ -40,9 +45,10 @@ onUnmounted(() => {
 })
 
 watch(
-    () => [props.show, props.canGetData], (newVal) => {
+    () => [props.show, props.canGetData, props.address], (newVal) => {
         if (newVal) {
             popupIsShow.value = newVal[0] as any
+            inputAddress.value = newVal[2] as any;
             // if (newVal[1]) {
                 
             // }
@@ -79,6 +85,30 @@ function onCopy() {
 }
 
 
+const inputAddress = ref('')
+function onPopupSubmit() {
+    if (!inputAddress.value) {
+        return;
+    }
+    emits("onAddressSubmit", inputAddress.value);
+}
+
+function onAddressCopy() {
+    if (!inputAddress.value) {
+        return;
+    }
+    const clipboard = new Clipboard('.copy-icon')
+    clipboard.on('success', () => {
+        showToast('Copied');
+        clipboard.destroy()
+    })
+    clipboard.on('error', () => {
+        showToast('Copy failed');
+        clipboard.destroy()
+    })
+
+}
+
 </script>
 
 <template>
@@ -99,38 +129,52 @@ function onCopy() {
                         <div class="rewards-progress-in" :style="{ width: percent + '%' }"></div>
                     </div>
                 </div>
-                <div class="rewards-desc">
-                    Just one step away from withdrawing! 
-                    <br>
-                    Invite friends to boost!
-                </div>
-                <div class="rewards-guide-step">
-                    <div class="guide-item">
-                        <img src="@/assets/images/rewards_share_icon.png">
-                        <p>Share with Friends</p>
-                    </div>
-                    <div class="right-icon">
-                        <img src="@/assets/images/rewards_right.png">
-                    </div>
-                    <div class="guide-item">
-                        <img src="@/assets/images/rewards_game_icon.png">
-                        <p>Friend Plays a Game</p>
-                    </div>
-                    <div class="right-icon">
-                        <img src="@/assets/images/rewards_right.png">
-                    </div>
-                    <div class="guide-item">
-                        <img src="@/assets/images/rewards_boost_icon.png">
-                        <p>Boost Successful</p>
-                    </div>
+
+                <div v-if="parseFloat(percent) >= 100" class="address-input-container">
+                  <div class="popup-desc">USDT Reward will deliver from Polygon Chain, please make sure you submit the right address</div>
+                  <div class="popup-input">
+                      <input type="text" v-model="inputAddress" />
+                      <div class="copy-icon" :data-clipboard-text="inputAddress" @click="onAddressCopy">
+                          <img src="@/assets/images/icon_copy.png" />
+                      </div>
+                  </div>
+                  <Button @click="onPopupSubmit" text="Submit" size="max" :style="{background: inputAddress ? '#FF398B' : 'rgba(0, 0, 0, 0.35)'}" />
                 </div>
 
-                <div class="rewards-guide-operation">
-                    <div class="invite-btn" @click=onInvite>Invite Friends to Boost</div>
-                    <div class="copy-icon" :data-clipboard-text="copyText" @click="onCopy">
-                        <img src="@/assets/images/rewards_copy.png" />
+                <template v-else>
+                    <div class="rewards-desc">
+                        Just one step away from withdrawing! 
+                        <br>
+                        Invite friends to boost!
                     </div>
-                </div>
+                    <div class="rewards-guide-step">
+                        <div class="guide-item">
+                            <img src="@/assets/images/rewards_share_icon.png">
+                            <p>Share with Friends</p>
+                        </div>
+                        <div class="right-icon">
+                            <img src="@/assets/images/rewards_right.png">
+                        </div>
+                        <div class="guide-item">
+                            <img src="@/assets/images/rewards_game_icon.png">
+                            <p>Friend Plays a Game</p>
+                        </div>
+                        <div class="right-icon">
+                            <img src="@/assets/images/rewards_right.png">
+                        </div>
+                        <div class="guide-item">
+                            <img src="@/assets/images/rewards_boost_icon.png">
+                            <p>Boost Successful</p>
+                        </div>
+                    </div>
+
+                    <div class="rewards-guide-operation">
+                        <div class="invite-btn" @click=onInvite>Invite Friends to Boost</div>
+                        <div class="copy-icon" :data-clipboard-text="copyText" @click="onCopy">
+                            <img src="@/assets/images/rewards_copy.png" />
+                        </div>
+                    </div>
+                </template>
                 
             </div>
         </div>
@@ -273,6 +317,58 @@ function onCopy() {
             }
         }
         
+        .address-input-container{
+            width: 100%;
+            padding-top: 20px;
+            .popup-desc{
+                color: rgb(0, 0, 0, 0.5);
+                text-align: center;
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 19px;
+                margin-top: 4px;
+            }
+            .popup-input{
+                width: 100%;
+                height: 48px;
+                margin: 20px 0;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 12px;
+                border-radius: 12px;
+                border: 1px solid rgba(0, 0, 0, 0.10);
+                overflow: hidden;
+                input{
+                    width: 100%;
+                    height: 100%;
+                    border: none;
+                    padding: 0 16px;
+                    color: #000;
+                    font-size: 16px;
+                    font-weight: 400;
+                    line-height: 22px;
+                    letter-spacing: -0.4px;
+
+                }
+                input:focus{
+                    border: none;
+                    outline: none;
+                }
+                .copy-icon{
+                    width: 48px;
+                    height: 48px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                    img{
+                        width: 24px;
+                        height: 24px;
+                    }
+                }
+            }
+        }
     }
 }
 
