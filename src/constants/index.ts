@@ -92,6 +92,15 @@ export const GAME_TEST_LIST = [
         groups: 0,
         rounds: 0,
     },
+    {
+        game_id: 10,
+        game_short_name: 'LuckySlide',
+        game_show_name: 'Lucky Slide',
+        game_url: 'https://t.me/myweb3gamebot/LuckySlide',
+        game_img: new URL('@/assets/images/game_slide.png', import.meta.url).href,
+        groups: 0,
+        rounds: 0,
+    },
 ]
 export const GAME_PROD_LIST = [
     {
@@ -172,6 +181,15 @@ export const GAME_PROD_LIST = [
         game_show_name: 'Lucky Runner',
         game_url: 'https://t.me/LuckyMiuuu_bot/LuckyRunner',
         game_img: new URL('@/assets/images/game_runner.png', import.meta.url).href,
+        groups: 0,
+        rounds: 0,
+    },
+    {
+        game_id: 10,
+        game_short_name: 'LuckySlide',
+        game_show_name: 'Lucky Slide',
+        game_url: 'https://t.me/LuckyMiuuu_bot/LuckySlide',
+        game_img: new URL('@/assets/images/game_slide.png', import.meta.url).href,
         groups: 0,
         rounds: 0,
     },
