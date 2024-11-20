@@ -71,8 +71,13 @@ function getUserPropList() {
                                 element.valid_time = userItem.valid_time
                                 const timestamp = new Date(userItem.valid_time).getTime()
                                 const diffTimestamp = timestamp - new Date().getTime()
-                                const hms = secondsToHMS(Math.floor(diffTimestamp / 1000))
-                                element.expire_text = element.type ? `Expires in ${hms.hours}h ${hms.minutes}mins` : 'Long-term validity'
+                                if (diffTimestamp <= 0) {
+                                  element.expire_text = element.type ? 'expired' : 'Long-term validity'
+                                } else {
+                                  const hms = secondsToHMS(Math.floor(diffTimestamp / 1000))
+                                  element.expire_text = element.type ? `Expires in ${hms.hours}h ${hms.minutes}mins` : 'Long-term validity'
+                                }
+                                
                             }
                         });
                     });
