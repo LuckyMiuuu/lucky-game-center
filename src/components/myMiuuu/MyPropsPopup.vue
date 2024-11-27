@@ -249,7 +249,7 @@ function onBuySend(item: UserProp) {
                                 </div>
                                 <div class="name ellipsis1">{{ item.name }}</div>
                                 <div v-if="item.has" class="expire ellipsis1">{{ item.expire_text }}</div>
-                                <div v-else class="buy">Not obtained</div>
+                                <div v-else class="buy ellipsis1">{{ item.btn_name ? item.btn_name : 'Not obtained'}}</div>
                             </div>
                         </van-grid-item>
                     </van-grid>
@@ -355,11 +355,13 @@ function onBuySend(item: UserProp) {
 
 .item-box{
     width: 100%;
+    max-width: 170px;
     padding: 16px 10px;
     box-sizing: border-box;
     border-radius: 8px;
     border: 1px rgba(0, 0, 0, 0.10) solid;
     cursor: pointer;
+    position: relative;
     .icon{
         width: 120px;
         height: 100px;
@@ -408,9 +410,9 @@ function onBuySend(item: UserProp) {
         font-weight: 500;
         margin: 0 auto;
         margin-top: 4px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        // display: flex;
+        // align-items: center;
+        // justify-content: center;
         box-sizing: border-box;
         padding: 0 6px;
     }
