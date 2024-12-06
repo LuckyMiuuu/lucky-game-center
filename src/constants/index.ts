@@ -115,7 +115,7 @@ export const GAME_TEST_LIST = [
       game_short_name: 'LuckyCrosser',
       game_show_name: 'Lucky Crosser',
       game_url: 'https://t.me/myweb3gamebot/LuckyCrosser',
-      game_img: new URL('@/assets/images/game_corsser.png', import.meta.url).href,
+      game_img: new URL('@/assets/images/game_crosser.png', import.meta.url).href,
       groups: 0,
       rounds: 0,
     },
