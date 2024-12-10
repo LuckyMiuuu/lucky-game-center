@@ -50,7 +50,7 @@ function onPopupEvent(event: string) {
         @closed="onPopupEvent('closed')"
     >
         <div class="popup-container">
-            <div class="popup-title">{{ title }}</div>
+            <div v-if="title" class="popup-title">{{ title }}</div>
             <div class="popup-content">
                 <slot></slot>
             </div>
