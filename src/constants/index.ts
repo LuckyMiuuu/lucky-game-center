@@ -128,6 +128,15 @@ export const GAME_TEST_LIST = [
       groups: 0,
       rounds: 0,
     },
+    {
+      game_id: 14,
+      game_short_name: 'LuckyClimber',
+      game_show_name: 'Lucky Climber',
+      game_url: 'https://t.me/myweb3gamebot/LuckyClimber',
+      game_img: new URL('@/assets/images/game_climber.png', import.meta.url).href,
+      groups: 0,
+      rounds: 0,
+    },
 ]
 export const GAME_PROD_LIST = [
     {
@@ -244,6 +253,15 @@ export const GAME_PROD_LIST = [
       game_show_name: 'Lucky Thrower',
       game_url: 'https://t.me/LuckyMiuuu_bot/LuckyThrower',
       game_img: new URL('@/assets/images/game_thrower.png', import.meta.url).href,
+      groups: 0,
+      rounds: 0,
+    },
+    {
+      game_id: 14,
+      game_short_name: 'LuckyClimber',
+      game_show_name: 'Lucky Climber',
+      game_url: 'https://t.me/LuckyMiuuu_bot/LuckyClimber',
+      game_img: new URL('@/assets/images/game_climber.png', import.meta.url).href,
       groups: 0,
       rounds: 0,
     },
