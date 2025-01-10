@@ -146,6 +146,15 @@ export const GAME_TEST_LIST = [
       groups: 0,
       rounds: 0,
     },
+    {
+      game_id: 16,
+      game_short_name: 'LuckyWalk',
+      game_show_name: 'Lucky Walk',
+      game_url: 'https://t.me/myweb3gamebot/LuckyWalk',
+      game_img: new URL('@/assets/images/game_walk.png', import.meta.url).href,
+      groups: 0,
+      rounds: 0,
+    },
 ]
 export const GAME_PROD_LIST = [
     {
@@ -280,6 +289,15 @@ export const GAME_PROD_LIST = [
       game_show_name: 'Lucky Blast',
       game_url: 'https://t.me/LuckyMiuuu_bot/LuckyBlast',
       game_img: new URL('@/assets/images/game_blast.png', import.meta.url).href,
+      groups: 0,
+      rounds: 0,
+    },
+    {
+      game_id: 16,
+      game_short_name: 'LuckyWalk',
+      game_show_name: 'Lucky Walk',
+      game_url: 'https://t.me/LuckyMiuuu_bot/LuckyWalk',
+      game_img: new URL('@/assets/images/game_walk.png', import.meta.url).href,
       groups: 0,
       rounds: 0,
     },
