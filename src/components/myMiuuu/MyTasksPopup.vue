@@ -277,9 +277,9 @@ function bindWalletSend(data: string) {
 
 function onOkxTask(task: OkxTask) {
     if (task.taskId == bindWalletTaskId) {
-        // if (isBindWalletTaskFinished()) {
-        //     return
-        // }
+        if (isBindWalletTaskFinished()) {
+            return
+        }
 
         if (currentIsConnectedStatus.value) {
             onDisconnectOkx();
@@ -410,7 +410,7 @@ function onClainCommonTask(task: CommonTask, index: number) {
                         </div>
                     </div>
                     
-                    <div v-if="item.finished" class="item-btn disable" @click="onOkxTask(item)">Done</div>
+                    <div v-if="item.finished" class="item-btn disable">Done</div>
                     <div v-else class="item-btn" @click="onOkxTask(item)">Start</div>
                     
                 </div>
