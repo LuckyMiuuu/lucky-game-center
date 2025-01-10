@@ -221,3 +221,7 @@ a {
     font-weight: 400;
     line-height: 15px;
 }
+
+#tc-widget-root div{
+  z-index: 9999 !important;
+}
