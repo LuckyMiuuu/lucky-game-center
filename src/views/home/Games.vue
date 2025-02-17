@@ -101,13 +101,15 @@ function onGame(game: GameInfo | undefined) {
         pendingGame.value = game
         onSendGamePopupShow()
     } else {
-        let gameShortUrl = game.game_url
+      // let gameShortUrl = game.game_url
+        let gameShortUrl = import.meta.env.VITE_GAME_CONTAINER_URL
         var params = {
             chat_id: props.params.from_chat_id,
             room_id: props.params.from_room_id,
             group_mode: props.params.from_group_mode,
             tg_user_id: selfTelegramUserId.value,
-            cost_type: 'miuuu_1'
+            cost_type: 'miuuu_1',
+            game_short_name: game.game_short_name
         }
         var gameUrl = gameShortUrl + '?startapp=' + base64Encode(JSON.stringify(params))
         window.open(gameUrl, '_blank');
