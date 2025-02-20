@@ -200,6 +200,15 @@ export const GAME_TEST_LIST = [
       groups: 0,
       rounds: 0,
     },
+    {
+      game_id: 22,
+      game_short_name: 'LuckyPlumber',
+      game_show_name: 'Lucky Plumber',
+      game_url: 'https://t.me/myweb3gamebot/LuckyPlumber',
+      game_img: new URL('@/assets/images/game_plumber.png', import.meta.url).href,
+      groups: 0,
+      rounds: 0,
+    },
 ]
 export const GAME_PROD_LIST = [
     {
@@ -388,6 +397,15 @@ export const GAME_PROD_LIST = [
       game_show_name: 'Lucky Kisser',
       game_url: 'https://t.me/LuckyMiuuu_bot/LuckyKisser',
       game_img: new URL('@/assets/images/game_kisser.png', import.meta.url).href,
+      groups: 0,
+      rounds: 0,
+    },
+    {
+      game_id: 22,
+      game_short_name: 'LuckyPlumber',
+      game_show_name: 'Lucky Plumber',
+      game_url: 'https://t.me/LuckyMiuuu_bot/LuckyPlumber',
+      game_img: new URL('@/assets/images/game_plumber.png', import.meta.url).href,
       groups: 0,
       rounds: 0,
     },
