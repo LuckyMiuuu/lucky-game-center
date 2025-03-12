@@ -218,6 +218,15 @@ export const GAME_TEST_LIST = [
       groups: 0,
       rounds: 0,
     },
+    {
+      game_id: 24,
+      game_short_name: 'LuckySplit',
+      game_show_name: 'Lucky Split',
+      game_url: 'https://t.me/myweb3gamebot/LuckySplit',
+      game_img: new URL('@/assets/images/game_split.png', import.meta.url).href,
+      groups: 0,
+      rounds: 0,
+    },
 ]
 export const GAME_PROD_LIST = [
     {
@@ -424,6 +433,15 @@ export const GAME_PROD_LIST = [
       game_show_name: 'Lucky Lumberjack',
       game_url: 'https://t.me/LuckyMiuuu_bot/LuckyLumberjack',
       game_img: new URL('@/assets/images/game_lumberjack.png', import.meta.url).href,
+      groups: 0,
+      rounds: 0,
+    },
+    {
+      game_id: 24,
+      game_short_name: 'LuckySplit',
+      game_show_name: 'Lucky Split',
+      game_url: 'https://t.me/LuckyMiuuu_bot/LuckySplit',
+      game_img: new URL('@/assets/images/game_split.png', import.meta.url).href,
       groups: 0,
       rounds: 0,
     },
