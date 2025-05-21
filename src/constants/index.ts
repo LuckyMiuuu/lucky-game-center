@@ -254,6 +254,15 @@ export const GAME_TEST_LIST = [
       groups: 0,
       rounds: 0,
     },
+    {
+      game_id: 28,
+      game_short_name: 'LuckyFighter',
+      game_show_name: 'Lucky Fighter',
+      game_url: 'https://t.me/myweb3gamebot/LuckyFighter',
+      game_img: new URL('@/assets/images/game_fighter.png', import.meta.url).href,
+      groups: 0,
+      rounds: 0,
+    },
 ]
 export const GAME_PROD_LIST = [
     {
@@ -496,6 +505,15 @@ export const GAME_PROD_LIST = [
       game_show_name: 'Lucky Pinball',
       game_url: 'https://t.me/LuckyMiuuu_bot/LuckyPinball',
       game_img: new URL('@/assets/images/game_pinball.png', import.meta.url).href,
+      groups: 0,
+      rounds: 0,
+    },
+    {
+      game_id: 28,
+      game_short_name: 'LuckyFighter',
+      game_show_name: 'Lucky Fighter',
+      game_url: 'https://t.me/LuckyMiuuu_bot/LuckyFighter',
+      game_img: new URL('@/assets/images/game_fighter.png', import.meta.url).href,
       groups: 0,
       rounds: 0,
     },
