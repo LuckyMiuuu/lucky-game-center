@@ -263,6 +263,15 @@ export const GAME_TEST_LIST = [
       groups: 0,
       rounds: 0,
     },
+    {
+      game_id: 29,
+      game_short_name: 'LuckyPlatformer',
+      game_show_name: 'Lucky Platformer',
+      game_url: 'https://t.me/myweb3gamebot/LuckyPlatformer',
+      game_img: new URL('@/assets/images/game_platformer.png', import.meta.url).href,
+      groups: 0,
+      rounds: 0,
+    },
 ]
 export const GAME_PROD_LIST = [
     {
@@ -514,6 +523,15 @@ export const GAME_PROD_LIST = [
       game_show_name: 'Lucky Fighter',
       game_url: 'https://t.me/LuckyMiuuu_bot/LuckyFighter',
       game_img: new URL('@/assets/images/game_fighter.png', import.meta.url).href,
+      groups: 0,
+      rounds: 0,
+    },
+    {
+      game_id: 29,
+      game_short_name: 'LuckyPlatformer',
+      game_show_name: 'Lucky Platformer',
+      game_url: 'https://t.me/LuckyMiuuu_bot/LuckyPlatformer',
+      game_img: new URL('@/assets/images/game_platformer.png', import.meta.url).href,
       groups: 0,
       rounds: 0,
     },
